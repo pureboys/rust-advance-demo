@@ -1,6 +1,6 @@
 use std::sync::atomic::{AtomicUsize, Ordering};
 
-fn incr(a: &AtomicUsize) {
+fn _incr(a: &AtomicUsize) {
     let mut current = a.load(Ordering::Relaxed);
     loop {
         let new = current + 1;
@@ -58,7 +58,7 @@ mod tests {
         thread::scope(|s| {
             for _ in 0..1000 {
                 s.spawn(|| {
-                    incr(&counter);
+                    _incr(&counter);
                 });
             }
         });

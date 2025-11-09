@@ -1,4 +1,4 @@
-static DATA: [i32; 5] = [1, 2, 3, 4, 5];
+static _DATA: [i32; 5] = [1, 2, 3, 4, 5];
 
 // 测试
 #[cfg(test)]
@@ -11,7 +11,7 @@ mod tests {
         let mut handles = Vec::new();
         for _ in 0..100 {
             let h = thread::spawn(|| {
-                println!("DATA:{DATA:#?}");
+                println!("DATA:{_DATA:#?}");
             });
             handles.push(h);
         }

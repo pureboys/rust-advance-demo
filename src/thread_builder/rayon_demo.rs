@@ -1,6 +1,6 @@
 use rayon::iter::{IntoParallelIterator, ParallelIterator};
 
-fn is_prime(n: u32) -> bool {
+fn _is_prime(n: u32) -> bool {
     (2..=n / 2).into_par_iter().all(|i| n % i != 0)
 }
 
@@ -11,7 +11,7 @@ mod tests {
 
     use rayon::prelude::*;
 
-    use crate::thread_builder::rayon_demo::is_prime;
+    use crate::thread_builder::rayon_demo::_is_prime;
 
     #[test]
     fn test_rayon() {
@@ -20,7 +20,7 @@ mod tests {
         let nums: Vec<u64> = (2..100000).collect();
         let mut primes = nums
             .par_iter()
-            .filter(|&n| is_prime(*n as u32))
+            .filter(|&n| _is_prime(*n as u32))
             .collect::<Vec<&u64>>();
 
         let elapsed = now.elapsed();
