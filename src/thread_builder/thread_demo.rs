@@ -1,6 +1,6 @@
 use std::thread;
 
-fn another_thread() {
+fn _another_thread() {
     println!(
         "In thread:{}",
         thread::current().name().unwrap_or("Unnamed")
@@ -18,7 +18,7 @@ mod tests {
         let handle = thread::Builder::new()
             .name("Thread1".into())
             .stack_size(4 * 1024 * 1024)
-            .spawn(another_thread)
+            .spawn(_another_thread)
             .unwrap();
         handle.join().unwrap();
     }

@@ -1,11 +1,11 @@
 use std::sync::LazyLock;
 
-fn init() -> i32 {
+fn _init() -> i32 {
     println!("initializing...");
     23
 }
 
-static NUMBER: LazyLock<i32> = LazyLock::new(|| {
+static _NUMBER: LazyLock<i32> = LazyLock::new(|| {
     println!("initializing...");
     100
 });
@@ -18,7 +18,7 @@ mod tests {
 
     #[test]
     fn test_lazy_cell() {
-        let lazy_cell = LazyCell::new(init);
+        let lazy_cell = LazyCell::new(_init);
         println!("=================");
         println!("{}", *lazy_cell);
         println!("{}", *lazy_cell);
@@ -29,7 +29,7 @@ mod tests {
         let handles = (0..5)
             .map(|_| {
                 thread::spawn(|| {
-                    println!("Thead sees NUMBER:{}", *NUMBER);
+                    println!("Thead sees NUMBER:{}", *_NUMBER);
                 })
             })
             .collect::<Vec<_>>();
