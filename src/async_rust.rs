@@ -2,5 +2,8 @@ mod async_demo1;
 mod async_demo2;
 mod async_demo3;
 mod async_demo4;
+mod async_demo5;
+mod async_demo6;
+mod async_demo7;
 mod tokio_demo;
 mod tokio_demo1;
